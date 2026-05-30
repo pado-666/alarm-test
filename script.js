@@ -1,6 +1,6 @@
 /**
  * ==========================================
- * 알람음 추천 프로그램 핵심 비즈니스 로직 (v1.3)
+ * 알람음 추천 프로그램 핵심 비즈니스 로직 (v1.4)
  * ==========================================
  */
 
@@ -210,18 +210,16 @@ function calculateAndRenderResult() {
     domElements.toolbarEmoji.textContent = resultData.emoji;
     domElements.toolbarName.textContent = resultData.name;
     
-    // 💡 비동기 충돌 방지: 기존 재생 완전히 멈춘 후 새로운 주소 로드
+    // 💡 GitHub Pages 서브 디렉토리 대응을 위해 "./" 경로 사용
     domElements.audioPlayer.pause();
-    domElements.audioSource.src = `audio/${selectedResultKey}.mp3`;
+    domElements.audioSource.src = `./audio/${selectedResultKey}.mp3`;
     domElements.audioPlayer.load();
     
-    // 최초 진입 시 정지 상태 아이콘 표시
     showPlayIcon();
 }
 
 /**
  * 🎵 안전한 오디오 재생/정지 제어 토글 함수
- * 비동기 play() 요청이 일어나는 도중 pause()가 겹쳐 에러가 나는 현상을 차단합니다.
  */
 let isPlayRequested = false; 
 
@@ -278,7 +276,6 @@ function closeModal() {
 }
 
 function resetApplication() {
-    // 🎵 다시 시작할 때는 재생 중이던 음악 완전히 정지 및 초기화
     domElements.audioPlayer.pause();
     domElements.audioPlayer.currentTime = 0;
     showPlayIcon();
@@ -301,10 +298,7 @@ domElements.btnMore.addEventListener('click', openModal);
 domElements.btnModalCloseX.addEventListener('click', closeModal); 
 domElements.btnModalClose.addEventListener('click', closeModal);  
 
-// 🎵 플레이어 오디오 툴바 제어 클릭 이벤트
 domElements.btnPlayToggle.addEventListener('click', toggleAudio);
-
-// 🎵 오디오 재생이 스스로 끝났을 때(End) 아이콘 자동으로 원상복구
 domElements.audioPlayer.addEventListener('ended', showPlayIcon);
 
 domElements.modalOverlay.addEventListener('click', (event) => {
