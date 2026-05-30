@@ -11,7 +11,7 @@
     <div class="app-container">
         
         <section id="stage-home" class="stage active">
-            <div class="brand-tag">ALARM FINDER <span class="version">v1.1</span></div>
+            <div class="brand-tag">ALARM FINDER <span class="version">v1.3</span></div>
             <h1 class="main-title">오늘 아침, 당신에게 맞는<br><span class="accent-text">알람음 추천받기</span></h1>
             <p class="description">
                 수면 시간과 피로도 — 단 2가지 질문으로 오늘 아침 당신에게 가장 알맞은 알람음을 찾아드립니다.
@@ -29,7 +29,6 @@
                 <span id="question-eyebrow" class="eyebrow">Question 01 / 02</span>
                 <h2 id="question-text" class="question-title">질문 텍스트가 들어갑니다.</h2>
                 <p class="subtitle">해당하는 항목을 선택해주세요.</p>
-                
                 <div id="options-container" class="options-grid"></div>
             </div>
         </section>
@@ -55,7 +54,26 @@
                 </div>
                 
                 <div class="result-footer">
-                    <button id="btn-more" class="btn btn-primary" style="margin-bottom: 12px;">🔍 분석 결과 더 알아보기</button>
+                    <div class="music-toolbar">
+                        <div class="toolbar-info">
+                            <span id="toolbar-emoji" class="toolbar-emoji">🎵</span>
+                            <div class="toolbar-text">
+                                <p id="toolbar-name" class="toolbar-track-name">Track Name</p>
+                                <p class="toolbar-status">추천 알람음 미리듣기</p>
+                            </div>
+                        </div>
+                        <div class="toolbar-controls">
+                            <button id="btn-play-toggle" class="play-toggle-btn">
+                                <svg id="icon-play" viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                                <svg id="icon-pause" viewBox="0 0 24 24" width="24" height="24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/></svg>
+                            </button>
+                        </div>
+                        <audio id="main-audio-player">
+                            <source id="audio-source" src="" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <button id="btn-more" class="btn btn-secondary-purple" style="margin-bottom: 12px;">🔍 뇌파 분석 결과 더 알아보기</button>
                     <p class="research-text">
                         ⚖️ 알람음의 주파수 특성과 기상 반응 간의 관계를 참고하여 추천했습니다.
                     </p>
@@ -73,8 +91,7 @@
                 <button id="btn-modal-close-x" class="modal-close-x">&times;</button>
             </div>
             <div class="modal-body">
-                <ul id="modal-detail-list" class="detail-list">
-                    </ul>
+                <ul id="modal-detail-list" class="detail-list"></ul>
             </div>
             <div class="modal-footer">
                 <button id="btn-modal-close" class="btn btn-secondary">창 닫기</button>

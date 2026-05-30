@@ -1,15 +1,15 @@
 /* ==========================================
-   1. 기본 변수 및 초기화 (Modern Reset & Variables)
+   1. 기본 변수 및 초기화
    ========================================== */
 :root {
-    --bg-color: #0b0813;         /* 전체 깊은 다크 배경 */
-    --card-bg: #161224;          /* 카드 컴포넌트 배경 */
-    --card-hover-bg: #221c36;    /* 선택지 호버 배경 */
-    --primary-color: #7c3aed;     /* 포인트 보라색 */
-    --primary-hover: #9061f3;    /* 포인트 보라색 호버 */
-    --text-main: #f3f4f6;        /* 메인 흰색 글씨 */
-    --text-muted: #9ca3af;       /* 연한 회색 글씨 */
-    --border-color: #2d2447;     /* 카드 테두리 선 */
+    --bg-color: #0b0813;         
+    --card-bg: #161224;          
+    --card-hover-bg: #221c36;    
+    --primary-color: #7c3aed;     
+    --primary-hover: #9061f3;    
+    --text-main: #f3f4f6;        
+    --text-muted: #9ca3af;       
+    --border-color: #2d2447;     
     --shadow-main: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(124, 58, 237, 0.05);
 }
 
@@ -33,16 +33,16 @@ body {
 }
 
 /* ==========================================
-   2. 레이아웃 컨테이너 (모바일 카드형 콤팩트 UI)
+   2. 레이아웃 컨테이너 (스크린샷 피드백 반영: max-width 최적화)
    ========================================== */
 .app-container {
     width: 100%;
-    max-width: 480px; /* 스마트폰 앱 크기 너비 제한 */
-    min-height: 580px;
+    max-width: 440px; /* 꽉 차서 무너지지 않도록 가장 예쁜 스마트폰 비율 폭으로 고정 */
+    min-height: 600px;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 32px; /* 크게 둥근 모서리 */
-    padding: 40px 32px;
+    border-radius: 32px; 
+    padding: 40px 28px;
     box-shadow: var(--shadow-main);
     position: relative;
     display: flex;
@@ -51,7 +51,7 @@ body {
 }
 
 /* ==========================================
-   3. 스테이지(화면 전환) 및 애니메이션 효과
+   3. 스테이지 및 애니메이션 효과
    ========================================== */
 .stage {
     display: none;
@@ -91,7 +91,7 @@ body {
 }
 
 /* ==========================================
-   4. 컴포넌트 스타일 (버튼, 텍스트 등)
+   4. 컴포넌트 스타일 (버튼, 텍스트)
    ========================================== */
 .brand-tag {
     font-size: 11px;
@@ -152,17 +152,20 @@ body {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
 }
-.btn-primary:active { transform: translateY(0) scale(1); }
 
 .btn-secondary {
-    background-color: #251f38;
-    color: var(--text-main);
+    background-color: #1d1830;
+    color: var(--text-muted);
     border: 1px solid var(--border-color);
 }
-.btn-secondary:hover {
-    background-color: #31294a;
-    color: white;
+.btn-secondary:hover { background-color: #251f38; color: white; }
+
+.btn-secondary-purple {
+    background-color: #22153f;
+    color: #c084fc;
+    border: 1px solid #4c1d95;
 }
+.btn-secondary-purple:hover { background-color: #2e1b57; color: white; }
 
 .time-tag {
     text-align: center;
@@ -231,7 +234,6 @@ body {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: white;
-    transform: scale(1.01);
 }
 
 /* ==========================================
@@ -253,177 +255,96 @@ body {
     animation: spin 1s linear infinite;
     margin-bottom: 24px;
 }
-.loading-text {
-    font-size: 15px;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+.loading-text { font-size: 15px; color: var(--text-muted); font-weight: 500; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 /* ==========================================
-   7. 결과 스테이지 내부 UI
+   7. 결과 및 ✨음악 사이트 감성 툴바 UI
    ========================================== */
 .result-card { text-align: center; }
-.result-emoji {
-    font-size: 54px;
-    margin: 16px 0;
-    animation: pulse 2s infinite;
-}
-.result-name {
-    font-size: 32px;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 4px;
-}
-.result-tagline {
-    font-size: 14px;
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 24px;
-}
+.result-emoji { font-size: 54px; margin: 16px 0; animation: pulse 2s infinite; }
+.result-name { font-size: 32px; font-weight: 800; color: white; margin-bottom: 4px; }
+.result-tagline { font-size: 14px; color: var(--primary-color); font-weight: 600; margin-bottom: 24px; }
 .result-desc {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    background-color: #1d1830;
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    text-align: left;
-    margin-bottom: 28px;
-}
-.research-text {
-    font-size: 11px;
-    color: #6b7280;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    font-size: 14px; color: var(--text-muted); line-height: 1.6;
+    background-color: #1d1830; padding: 20px; border-radius: 16px;
+    border: 1px solid var(--border-color); text-align: left; margin-bottom: 20px;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
+/* 🎵 멜론/스포티파이 감성 오디오 툴바 바 패널 디자인 */
+.music-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #1e1736 0%, #150f24 100%);
+    border: 1px solid #3b2d61;
+    border-radius: 20px;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    text-align: left;
 }
+.toolbar-info { display: flex; align-items: center; gap: 14px; }
+.toolbar-emoji { font-size: 26px; }
+.toolbar-text { display: flex; flex-direction: column; gap: 2px; }
+.toolbar-track-name { font-size: 14px; font-weight: 700; color: white; }
+.toolbar-status { font-size: 11px; color: #a78bfa; font-weight: 500; }
+
+/* 원형 재생 컨트롤 토글 버튼 */
+.play-toggle-btn {
+    width: 44px;
+    height: 44px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.4);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.play-toggle-btn:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.08);
+}
+.play-toggle-btn:active { transform: scale(0.95); }
+
+.research-text { font-size: 11px; color: #6b7280; line-height: 1.5; margin-bottom: 20px; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.06); } 100% { transform: scale(1); } }
 
 /* ==========================================
-   8. ✨ 더 알아보기 모달창(Modal) 스타일
+   8. 더 알아보기 모달창(Modal) 스타일
    ========================================== */
 .modal-overlay {
-    display: none; /* 기본 숨김 */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(4, 3, 7, 0.85); /* 반투명 검정 오버레이 */
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    display: none; 
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(4, 3, 7, 0.85); z-index: 1000;
+    justify-content: center; align-items: center; padding: 20px;
 }
-
-/* 모달이 켜졌을 때 활성화될 클래스 */
-.modal-overlay.open {
-    display: flex;
-    animation: fadeIn 0.25s ease-out forwards;
-}
-
+.modal-overlay.open { display: flex; animation: fadeIn 0.25s ease-out forwards; }
 .modal-card {
-    width: 100%;
-    max-width: 440px;
-    background-color: #1a152e; /* 본체보다 아주 살짝 밝은 네이비블랙 */
-    border: 1px solid #362b59;
-    border-radius: 24px;
-    padding: 32px 28px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.1);
-    transform: translateY(30px);
-    opacity: 0;
+    width: 100%; max-width: 400px; background-color: #1a152e;
+    border: 1px solid #362b59; border-radius: 24px; padding: 32px 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); transform: translateY(20px); opacity: 0;
 }
+.modal-overlay.open .modal-card { animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards; }
+@keyframes modalSlideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-/* 모달 오픈 시 카드 상승 애니메이션 적용 */
-.modal-overlay.open .modal-card {
-    animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
-}
-
-@keyframes modalSlideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #2d2447;
-    padding-bottom: 14px;
-}
-
-.modal-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-/* 상단 닫기 X 버튼 */
-.modal-close-x {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 28px;
-    line-height: 1;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #2d2447; padding-bottom: 14px; }
+.modal-title { font-size: 17px; font-weight: 700; color: var(--text-main); }
+.modal-close-x { background: none; border: none; color: var(--text-muted); font-size: 28px; cursor: pointer; }
 .modal-close-x:hover { color: white; }
-
-.modal-body {
-    margin-bottom: 24px;
-}
-
-/* 상세 리스트 가독성 최적화 여백 및 줄 간격 확보 */
-.detail-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.detail-list li {
-    font-size: 14px;
-    color: #cbd5e1;
-    line-height: 1.7; /* 줄간격(line-height)을 1.7로 충분히 확보 */
-    position: relative;
-    padding-left: 24px;
-}
-
-/* 리스트 앞에 생길 보라색 예쁜 불릿 포인트 기호 */
-.detail-list li::before {
-    content: "•";
-    position: absolute;
-    left: 8px;
-    color: var(--primary-color);
-    font-size: 18px;
-    top: -1px;
-}
+.modal-body { margin-bottom: 24px; }
+.detail-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.detail-list li { font-size: 13.5px; color: #cbd5e1; line-height: 1.7; position: relative; padding-left: 20px; }
+.detail-list li::before { content: "•"; position: absolute; left: 6px; color: var(--primary-color); font-size: 18px; top: -1px; }
 
 /* ==========================================
-   9. 미디어 쿼리 (반응형 대응 브레이크포인트)
+   9. 미디어 쿼리 (모바일 풀화면 대응)
    ========================================== */
 @media (max-width: 520px) {
     body { padding: 0; }
-    .app-container {
-        max-width: 100%;
-        min-height: 100vh;
-        border-radius: 0;
-        border: none;
-        padding: 40px 24px;
-    }
-    .modal-card {
-        max-width: 100%;
-        margin: 0 10px;
-    }
+    .app-container { max-width: 100%; min-height: 100vh; border-radius: 0; border: none; padding: 40px 20px; }
 }
